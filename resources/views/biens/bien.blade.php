@@ -8,7 +8,10 @@
 </head>
 <body>
 <div class="container">
-
+<a href="#" onclick="document.getElementById('form-logout').submit()" class="btn btn-success offset-7 mt-4">
+    <form action="/deconnexionUser" method="post" id="form-logout">@csrf</form>
+    <i class="zmdi zmdi-power"></i>Se Déconnecter
+</a>
 <h1>Article</h1>
     <ul class="d-flex flex-wrap justify-content-between">
         @foreach($biens as $bien)
