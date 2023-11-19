@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bien;
 use Illuminate\Http\Request;
 
 class DashboardUserController extends Controller
@@ -11,7 +12,9 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $biens = Bien::all();
+        return view('admin.index',compact('biens'));
+        // return view('admin.index');
     }
 
     /**

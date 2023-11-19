@@ -54,8 +54,8 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-chart-bar"></i>Biens</a>
+                            <a href="/ajoutBien">
+                                <i class="fas fa-chart-bar"></i>Ajout Biens</a>
                         </li>
                         <li>
                             <a href="#">
@@ -105,8 +105,10 @@
                                                         <a href="#">{{auth()->user()->nom}} {{auth()->user()->prenom}}</a>
                                                     </h5>
                                                     <span class="email">{{auth()->user()->email}}</span>
+                                                    
                                                 </div>
                                             </div>
+                                            
                                             <div class="account-dropdown__footer">
                                                 <a href="#" onclick="document.getElementById('form-logout').submit()">
                                                     <form action="/deconnexionUser" method="post" id="form-logout">@csrf</form>
@@ -128,7 +130,56 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         
-                       
+                    <div class="container text-center">
+        <div class="row">
+            <div class="col s12">
+                <h1>Liste des biens</h1>
+                     <hr>
+                    <a href="/ajoutBien" class="btn btn-primary">Ajouter un bien</a>
+                    <hr>
+                    @if(session('status'))
+                        <div class="alert alert-success">
+                            {{session('status')}}
+                        </div>
+                     @endif
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Numéro</th>
+                                <th>Nom bien</th>
+                                <th>Catégorie</th>
+                                <th>Adresse</th>
+                                <th>Statut</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                            $numero = 1;
+                            @endphp
+
+                            @foreach($biens as $bien)
+                            <tr>
+                                <td>{{$numero}}</td>
+                                <td>{{$bien->nom}}</td>
+                                <td>{{$bien->categorie}}</td>
+                                <td>{{$bien->adresse}}</td>
+                                <td>{{$bien->statut}}</td>
+                                <td>
+                                    <a href="/detail-bien/{{$bien->id}}" class="btn btn-success">Détails</a>
+                                </td>
+                            </tr>
+                            @php
+                            $numero++;
+                            @endphp
+                            @endforeach
+                            
+                        </tbody>
+                    </table>
+            </div>
+   
+        </div>
+    </div>
                        
                         
                     </div>
