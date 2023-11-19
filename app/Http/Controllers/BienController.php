@@ -13,7 +13,7 @@ class BienController extends Controller
      */
     public function index()
     {
-        $biens = Bien::paginate(3);
+        $biens = Bien::where('statut', 'disponible')->paginate(3);
         return view('biens.bien',compact('biens'));
     }
 
@@ -67,10 +67,10 @@ class BienController extends Controller
         return view('biens.detail',compact('bien'));
     }
 
-    public function index_admin(){
-        $biens = Bien::all();
-        return view('admin.index',compact('biens'));
-    }
+    // public function index_admin(){
+    //     $biens = Bien::where('statut', 'disponible')->get();
+    //     return view('admin.index',compact('biens'));
+    // }
 
     public function show_admin(string $id){
         $bien = Bien::findOrFail($id);
@@ -80,9 +80,10 @@ class BienController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request,string $id)
     {
-        //
+        $bien = Bien::find($id);
+        return view('admin.update', compact('bien'));
     }
 
     /**
@@ -90,7 +91,30 @@ class BienController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nom'=>'bail|required|string|',
+            'categorie'=>'bail|required|string|',
+           'image'=>'sometimes|image|mimes:jpeg,png,jpg,gif',
+            'description'=>'bail|required|string|',
+            'adresse'=>'bail|required|string|',
+            'statut'=>'bail|string|'
+        ]);
+        $bien = Bien::find($id);
+
+            $bien->nom =$request->nom;
+            $bien->categorie =$request->categorie;
+            $bien->description =$request->description;
+            $bien->adresse =$request->adresse;
+            $bien->statut =$request->statut;
+
+            if($request->file('image')){
+                $file= $request->file('image');
+                $filename= date('YmdHi').$file->getClientOriginalName();
+                $file-> move(public_path('public/images'), $filename);
+                $bien['image']= $filename;
+            }
+            $bien->update();
+            return redirect('/admin');
     }
 
     /**
@@ -98,6 +122,8 @@ class BienController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bien = Bien::find($id);
+        $bien->delete();
+        return redirect('/admin');
     }
 }

@@ -12,7 +12,7 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        $biens = Bien::all();
+        $biens = Bien::where('statut', 'disponible')->get();
         return view('admin.index',compact('biens'));
         // return view('admin.index');
     }

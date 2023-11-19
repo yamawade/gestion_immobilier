@@ -26,9 +26,12 @@ Route::post('/inscriptionUser', [AuthController::class,'store']);
 
 
 /*routes pour les biens*/
-Route::get('/biens',[BienController::class,'index'])->name('biens.index');
+Route::get('/dashboardUser',[BienController::class,'index'])->name('biens.index');
 Route::get('/ajoutBien',[BienController::class,'create'])->name('biens.create');
 Route::post('/ajoutBien-traitement',[BienController::class,'store'])->name('biens.store');
 Route::get('/biens/{id}/detail',[BienController::class,'show'])->name('biens.show');
 // Route::get('/admin',[BienController::class,'index_admin'])->name('biens.index_admin');
 Route::get('/detail-bien/{id}',[BienController::class,'show_admin'])->name('biens.show_admin');
+Route::get('/biens/update/{id}',[BienController::class,'edit'])->name('biens.edit');
+Route::post('/biens/update-traitement/{id}',[BienController::class,'update'])->name('biens.update');
+Route::get('/biens/delete/{id}',[BienController::class,'destroy'])->name('biens.destroy');

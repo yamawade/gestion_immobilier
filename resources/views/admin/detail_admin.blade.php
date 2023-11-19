@@ -10,7 +10,7 @@
 
 <div class="container" >
     <div class="card mb-4 mt-4" style="max-width: 540px;">
-    <img src="{{ url('public/images/'.$bien->image) }}" class="img-fluid rounded-start h-100" alt="" width="600px" height="155px" >
+    <img src="{{ asset('public/images/'.$bien->image) }}" class="img-fluid rounded-start h-100" alt="" width="600px" height="155px" >
     <div class="row g-0">
         <!-- <div class="col-md-4  ">
 
@@ -26,8 +26,8 @@
         </div>
     </div>
     </div>
-        <a href="/update-bien/{{$bien->id}}" class="btn btn-success">Modifier</a>
-        <a href="/delete-bien/{{$bien->id}}" class="btn btn-danger">supprimer</a>
+        <a href="/biens/update/{{$bien->id}}" class="btn btn-success">Modifier</a>
+        <a href="/biens/delete/{{$bien->id}}" class="btn btn-danger">supprimer</a>
         <a href="{{'/admin'}}" class="btn btn-info">Retour</a>
 </div>
 

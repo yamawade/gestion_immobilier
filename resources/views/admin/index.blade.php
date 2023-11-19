@@ -135,8 +135,7 @@
             <div class="col s12">
                 <h1>Liste des biens</h1>
                      <hr>
-                    <a href="/ajoutBien" class="btn btn-primary">Ajouter un bien</a>
-                    <hr>
+
                     @if(session('status'))
                         <div class="alert alert-success">
                             {{session('status')}}
