@@ -24,7 +24,7 @@ Route::post('/deconnexionUser', [AuthController::class,'logout']);
 Route::get('/inscription', [AuthController::class,'create']);
 Route::post('/inscriptionUser', [AuthController::class,'store']);
 /*routes pour les utilisateurs simple*/
-Route::get('/listeUtilisateur', [AuthController::class,'index']);
+Route::get('/listeUtilisateur', [AuthController::class,'index'])->middleware('auth');
 
 
 /*routes pour les biens*/

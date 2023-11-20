@@ -34,7 +34,7 @@ class AuthController extends Controller
         $request->validate([
             'nom'=>'required|min:2|max:20 ',
             'prenom'=>'required |min:2|max:20',
-            'email'=>'required',
+            'email'=>'required|email',
             'password'=>'required',
         ]);
         $user->nom=$request->nom;

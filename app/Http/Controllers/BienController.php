@@ -34,7 +34,7 @@ class BienController extends Controller
         $request->validate([
             'nom'=>'bail|required|string|',
             'categorie'=>'bail|required|string|',
-           'image'=>'required',
+           'image'=>'required|image',
             'description'=>'bail|required|string|',
             'adresse'=>'bail|required|string|',
             'statut'=>'bail|string|'

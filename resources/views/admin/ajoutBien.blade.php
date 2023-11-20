@@ -3,9 +3,9 @@
 @section('content')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <div class="container">
+<a href="{{'/admin'}}" class="btn btn-danger mt-4">Retour a la liste</a>
     <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-md-4 my-5">
-            
+            <div class="col-md-4" style=" margin-right:250px;">
                 @if(session('status'))
                 <div class="alert alert-success">
                     {{session('status')}}
@@ -16,14 +16,58 @@
                     <li class="alert alert-danger">{{$error}}</li>
                     @endforeach
                 </ul>
-                <form action="/ajoutBien-traitement" method="post"  enctype="multipart/form-data">
+                <div class="card " style="width: 600px;">
+                    <form action="/ajoutBien-traitement" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-header text-center bg-primary text-white">
+                            AJOUT D'UN BIEN
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="nomBien" class="form-label mt-4">Nom bien</label>
+                                <input type="text" class="form-control" id="nomBien" name="nom" >
+                            </div>
+                            <div class="form-group">
+                                <label for="categorie" class="form-label mt-4">Categorie</label>
+                                <select class="form-select " aria-label="Default select example" name="categorie">
+                                    <option value="luxe">luxe</option>
+                                    <option value="moyen">moyen</option>
+                                    <option value="simple">simple</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="image" class="form-label mt-4">Image</label>
+                                <input type="file" class="form-control" id="image" name="image">
+                                    
+                            </div>
+                            <div class="form-group">
+                                <label for="description" class="form-label mt-4">Dscription</label>
+                                <textarea class="form-control" id="description" name="description" placeholder="Description" ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="adresse" class="form-label mt-4">Adresse</label>
+                                <input type="text" class="form-control" id="adresse" name="adresse" >
+                            </div>
+                            <div class="form-group">
+                                <label for="statut" class="form-label mt-4">Statut</label>
+                                <select class="form-select " aria-label="Default select example" name="statut">
+                                    <option value="disponible">disponible</option>
+                                    <option value="indisponible">indisponible</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg offset-5 mt-4 text-white">Submit</button> 
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- <form action="/ajoutBien-traitement" method="post"  enctype="multipart/form-data">
                     @csrf
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="form-label mt-4">Nom bien</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="nom" >
+                            <label for="nomBien" class="form-label mt-4">Nom bien</label>
+                            <input type="text" class="form-control" id="nomBien" name="nom" >
                         </div>
                         <div class="form-group">
-                        <label for="exampleInputEmail1" class="form-label mt-4">Categorie</label>
+                            <label for="categorie" class="form-label mt-4">Categorie</label>
                             <select class="form-select " aria-label="Default select example" name="categorie">
                                 <option value="luxe">luxe</option>
                                 <option value="moyen">moyen</option>
@@ -31,28 +75,28 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="form-label mt-4">Image</label>
-                            <input type="file" class="form-control" id="exampleInputEmail1" name="image">
+                            <label for="image" class="form-label mt-4">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
                                 
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="form-label mt-4">Dscription</label>
-                            <textarea class="form-control" id="exampleInputEmail1" name="description" placeholder="Description" ></textarea>
+                            <label for="description" class="form-label mt-4">Dscription</label>
+                            <textarea class="form-control" id="description" name="description" placeholder="Description" ></textarea>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="form-label mt-4">Adresse</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="adresse" >
+                            <label for="adresse" class="form-label mt-4">Adresse</label>
+                            <input type="text" class="form-control" id="adresse" name="adresse" >
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1" class="form-label mt-4">Statut</label>
+                            <label for="statut" class="form-label mt-4">Statut</label>
                             <select class="form-select " aria-label="Default select example" name="statut">
                                 <option value="disponible">disponible</option>
                                 <option value="indisponible">indisponible</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-info mt-4">Submit</button>
-                </form>
-                <a href="{{'/admin'}}" class="btn btn-danger mt-4">Retour a la liste</a>
+                </form> -->
+                
             </div>
         </div>
 </div>
