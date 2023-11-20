@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bien;
+use App\Models\Comment;
 
 use Illuminate\Http\Request;
 
@@ -63,8 +64,9 @@ class BienController extends Controller
      */
     public function show(string $id)
     {
+        $comments = Comment::where('bien_id',$id)->get();
         $bien = Bien::findOrFail($id);
-        return view('biens.detail',compact('bien'));
+        return view('biens.detail',compact('bien' ,'comments'));
     }
 
     // public function index_admin(){
@@ -73,8 +75,10 @@ class BienController extends Controller
     // }
 
     public function show_admin(string $id){
+ 
         $bien = Bien::findOrFail($id);
         return view('admin.detail_admin',compact('bien'));
+        
     }
 
     /**
@@ -126,4 +130,6 @@ class BienController extends Controller
         $bien->delete();
         return redirect('/admin');
     }
+   
 }
+

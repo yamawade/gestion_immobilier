@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BienController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\CommentController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,5 @@ Route::get('/detail-bien/{id}',[BienController::class,'show_admin'])->name('bien
 Route::get('/biens/update/{id}',[BienController::class,'edit'])->name('biens.edit')->middleware('auth');
 Route::post('/biens/update-traitement/{id}',[BienController::class,'update'])->name('biens.update')->middleware('auth');
 Route::get('/biens/delete/{id}',[BienController::class,'destroy'])->name('biens.destroy')->middleware('auth');
+
+Route::post('/comment-traitement/{id}',[CommentController::class,'ajoutCommentaire']);
