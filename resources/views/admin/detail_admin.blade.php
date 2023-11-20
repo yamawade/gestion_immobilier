@@ -8,27 +8,25 @@
 </head>
 <body>
 
-<div class="container" >
-    <div class="card mb-4 mt-4" style="max-width: 540px;">
-    <img src="{{ asset('public/images/'.$bien->image) }}" class="img-fluid rounded-start h-100" alt="" width="600px" height="155px" >
-    <div class="row g-0">
-        <!-- <div class="col-md-4  ">
-
-        </div> -->
-        <div class="col-md-8 ">
-        <div class="card-body">
-            <h5 class="card-title">Nom du bien: {{$bien->nom}}</h5>
-            <p class="card-text">Catégorie: {{$bien->categorie}}</p>
-            <p class="card-text">Description: {{ $bien->description}}</p>
-            <p class="card-text">Adresse: {{ $bien->adresse}}</p>
-            <p class="card-text">Statut: {{ $bien->statut}}</p>
-        </div>
+<div class="container  offset-2">
+    <div class="card mb-4 mt-4" style=" width:80%;">
+        <img src="{{ asset('public/images/'.$bien->image) }}" class="img-fluid rounded-start" alt="" style="height: 350px; width: 100%;">
+        <div class="row">
+            <!-- <div class="col-md-8"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Nom du bien: {{$bien->nom}}</h5>
+                    <p class="card-text">Catégorie: {{$bien->categorie}}</p>
+                    <p class="card-text">Description: {{ $bien->description}}</p>
+                    <p class="card-text">Adresse: {{ $bien->adresse}}</p>
+                    <p class="card-text">Statut: {{ $bien->statut}}</p>
+                    <a href="/biens/update/{{$bien->id}}" class="btn btn-success">Modifier</a>
+                    <a href="/biens/delete/{{$bien->id}}" class="btn btn-danger">supprimer</a>
+                    <a href="{{'/admin'}}" class="btn btn-info">Retour</a>
+                </div>
+            <!-- </div> -->
         </div>
     </div>
-    </div>
-        <a href="/biens/update/{{$bien->id}}" class="btn btn-success">Modifier</a>
-        <a href="/biens/delete/{{$bien->id}}" class="btn btn-danger">supprimer</a>
-        <a href="{{'/admin'}}" class="btn btn-info">Retour</a>
+        
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

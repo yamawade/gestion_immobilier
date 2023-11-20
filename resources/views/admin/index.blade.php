@@ -50,7 +50,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active has-sub">
-                            <a class="js-arrow" href="#">
+                            <a class="js-arrow" href="/admin">
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                         </li>
                         <li>
@@ -58,7 +58,7 @@
                                 <i class="fas fa-chart-bar"></i>Ajout Biens</a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="/listeUtilisateur">
                                 <i class="fas fa-table"></i>Utilisateurs</a>
                         </li>
                         <li>
@@ -88,7 +88,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="DashboardAdmin/images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="DashboardAdmin/images/icon/hijab.jpg" alt="John Doe" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">{{auth()->user()->nom}} {{auth()->user()->prenom}}</a>
@@ -97,7 +97,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="DashboardAdmin/images/icon/avatar-01.jpg" alt="John Doe" />
+                                                        <img src="DashboardAdmin/images/icon/hijab.jpg" alt="John Doe" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -130,58 +130,10 @@
                 <div class="section__content section__content--p30">
                     <div class="container-fluid">
                         
-                    <div class="container text-center">
-        <div class="row">
-            <div class="col s12">
-                <h1>Liste des biens</h1>
-                     <hr>
-
-                    @if(session('status'))
-                        <div class="alert alert-success">
-                            {{session('status')}}
-                        </div>
-                     @endif
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Numéro</th>
-                                <th>Nom bien</th>
-                                <th>Catégorie</th>
-                                <th>Adresse</th>
-                                <th>Statut</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                            $numero = 1;
-                            @endphp
-
-                            @foreach($biens as $bien)
-                            <tr>
-                                <td>{{$numero}}</td>
-                                <td>{{$bien->nom}}</td>
-                                <td>{{$bien->categorie}}</td>
-                                <td>{{$bien->adresse}}</td>
-                                <td>{{$bien->statut}}</td>
-                                <td>
-                                    <a href="/detail-bien/{{$bien->id}}" class="btn btn-success">Détails</a>
-                                </td>
-                            </tr>
-                            @php
-                            $numero++;
-                            @endphp
-                            @endforeach
-                            
-                        </tbody>
-                    </table>
-            </div>
-   
-        </div>
-    </div>
+                       @yield('content')
                        
                         
-                    </div>
+                     </div>
                 </div>
             </div>
             <!-- END MAIN CONTENT-->

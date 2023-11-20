@@ -12,7 +12,8 @@ class AuthController extends Controller
      */
     public function index()
     {
-        //
+        $users=User::where('role','user')->get();
+        return view('admin.listeUser',compact('users'));
     }
 
     /**
