@@ -23,6 +23,24 @@
                     <a href="/biens/delete/{{$bien->id}}" class="btn btn-danger">supprimer</a>
                     <a href="{{'/admin'}}" class="btn btn-info">Retour</a>
                 </div>
+
+                <div class="card bg-light mb-3 mx-auto mt-4" style="max-width: 600px;">
+        @foreach($comments as $comment)
+            <div class="card-header">
+                <h5> {{$comment->user->nom}} {{$comment->user->prenom}}</h5>
+                <div class="float-end">
+            </div>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{$comment->contenu}}</p>
+                <p class="card-title">{{$comment->created_at}}</p>
+            </div>
+              @if ($comment->user_id=auth()->user()->id)
+             <a href="{{ route('commentaire.supprimer', ['id' => $comment->id]) }}" class="btn btn-sm btn-warning">Supprimer</a>
+             @endif
+             @endforeach
+ 
+        </div>
             <!-- </div> -->
         </div>
     </div>
