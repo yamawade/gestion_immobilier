@@ -40,17 +40,23 @@
        
     </div>
 
-    @foreach($comments as $comment)
         <div class="card bg-light mb-3 mx-auto" style="max-width: 600px;">
+        @foreach($comments as $comment)
             <div class="card-header">
                 <h5> {{$comment->user->nom}} {{$comment->user->prenom}}</h5>
+                <div class="float-end">
+            </div>
             </div>
             <div class="card-body">
                 <p class="card-text">{{$comment->contenu}}</p>
                 <p class="card-title">{{$comment->created_at}}</p>
             </div>
+              @if ($comment->user_id=auth()->user()->id)
+             <a href="{{ route('commentaire.modifier', ['id' => $comment->id]) }}" class="btn btn-sm btn-warning">Modifier</a>
+             @endif
+             @endforeach
+ 
         </div>
-    @endforeach
     <a href="{{'/dashboardUser'}}" class="btn btn-info mt-3">Retour à la liste</a>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>

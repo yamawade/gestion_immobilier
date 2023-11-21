@@ -2,76 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Comment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CommentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Store a newly created comment in storage.
      */
-    public function ajoutCommentaire(Request $req)
+    public function store(Request $request, string $bienId)
     {
-        $userId=$req->validate([
-            'contenu'=>'required',      
+        $request->validate([
+
+            'contenu'=>'required|string',
         ]);
 
-        $comment= new Comment();
-        $comment->contenu=$req->contenu;
-        $comment->user_id=$req->user_id;
-        $comment->bien_id=$req->bien_id;
+        $comment = new Comment();
+        $comment->user_id = $request->user_id;
+        $comment->contenu = $request->contenu;
+        $comment->bien_id = $request->bien_id;
         $comment->save();
+
+        return redirect()->route('biens.show', ['id' => $bienId])->with('status', 'Commentaire ajouté avec succès !!');
+    }
+
+    /**
+     * Update the specified comment in storage.
+     */
+   
+        public function edit( $id)
+        {
+            $comment = comment::find($id);
+            return view('biens.update', compact('comment'));
+        }
+
+        public function update(Request $request, string $id)
+    {
+        $request->validate([
+            'contenu'=>'required|string',
+        ]);
+        $comment = comment::find($id);
+
+        $comment->user_id = $request->user_id;
+        $comment->contenu = $request->contenu;
+        $comment->bien_id = $request->bien_id;
+            
+        $comment->update();
+
+        $idBien=$comment->bien_id;
+        return Redirect::route('biens.show',['id'=>$idBien]);
+    }
+
+    public function delete($id){
+        $comment = comment::find($id);
+        $comment->delete();
         return back();
-
+         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function listerComment()
-    // {
-    //     $comments=Comment::all();
-    //     return view('biens.detail',compact('comments'));
-    // }
+ } 
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
-}

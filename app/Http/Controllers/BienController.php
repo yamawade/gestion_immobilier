@@ -75,9 +75,9 @@ class BienController extends Controller
     // }
 
     public function show_admin(string $id){
- 
+        $comments = Comment::where('bien_id',$id)->get();
         $bien = Bien::findOrFail($id);
-        return view('admin.detail_admin',compact('bien'));
+        return view('admin.detail_admin',compact('bien', 'comments'));
         
     }
 
