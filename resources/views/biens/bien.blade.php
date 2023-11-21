@@ -8,7 +8,8 @@
 </head>
 <body>
 <div class="container">
-<a href="#" onclick="document.getElementById('form-logout').submit()" class="btn btn-success offset-7 mt-4">
+<h1>Bienvenue {{auth()->user()->prenom}} {{auth()->user()->nom}} 😊</h1>
+<a href="#" onclick="document.getElementById('form-logout').submit()" class="btn btn-danger offset-8 mt-4">
     <form action="/deconnexionUser" method="post" id="form-logout">@csrf</form>
     <i class="zmdi zmdi-power"></i>Se Déconnecter
 </a>

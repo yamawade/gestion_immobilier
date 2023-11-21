@@ -50,18 +50,3 @@ Route::middleware(['auth', 'role:user'])->group(function(){
     Route::get('/modifier-commentaire/{id}', [CommentController::class,'edit'])->name('commentaire.modifier');
     Route::post('/comment-update-traitement/{id}',[CommentController::class,'update']); 
 });
-//Route::get('/dashboardUser',[BienController::class,'index'])->name('biens.index')->middleware('auth');
-//Route::get('/ajoutBien',[BienController::class,'create'])->name('biens.create')->middleware('auth');
-//Route::post('/ajoutBien-traitement',[BienController::class,'store'])->name('biens.store')->middleware('auth');
-// Route::get('/biens/{id}/detail',[BienController::class,'show'])->name('biens.show')->middleware('auth');
-// Route::get('/admin',[BienController::class,'index_admin'])->name('biens.index_admin');
-// Route::get('/detail-bien/{id}',[BienController::class,'show_admin'])->name('biens.show_admin')->middleware('auth');
-// Route::get('/biens/update/{id}',[BienController::class,'edit'])->name('biens.edit')->middleware('auth');
-// Route::post('/biens/update-traitement/{id}',[BienController::class,'update'])->name('biens.update')->middleware('auth');
-// Route::get('/biens/delete/{id}',[BienController::class,'destroy'])->name('biens.destroy')->middleware('auth');
-
-// Route::post('/comment-traitement/{id}',[CommentController::class,'store']);
-
-// Route::get('/modifier-commentaire/{id}', [CommentController::class,'edit'])->name('commentaire.modifier');
-// Route::post('/comment-update-traitement/{id}',[CommentController::class,'update']); 
-// Route::get('/delete-commentaire/{id}', [CommentController::class,'delete'])->name('commentaire.supprimer');
