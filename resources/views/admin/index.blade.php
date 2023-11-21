@@ -61,10 +61,6 @@
                             <a href="/listeUtilisateur">
                                 <i class="fas fa-table"></i>Utilisateurs</a>
                         </li>
-                        <li>
-                            <a href="#">
-                                <i class="far fa-check-square"></i>Commentaire</a>
-                        </li>
                     </ul>
                 </nav>
             </div>
