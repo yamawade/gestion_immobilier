@@ -26,7 +26,7 @@ Route::post('/deconnexionUser', [AuthController::class,'logout']);
 Route::get('/inscription', [AuthController::class,'create']);
 Route::post('/inscriptionUser', [AuthController::class,'store']);
 /*routes pour les utilisateurs simple*/
-Route::get('/listeUtilisateur', [AuthController::class,'index'])->middleware('auth');
+// Route::get('/listeUtilisateur', [AuthController::class,'index'])->middleware('auth');
 
 /*ROUTES POUR ADMIN*/
 Route::middleware(['auth', 'role:admin'])->group(function(){
@@ -39,6 +39,8 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::post('/biens/update-traitement/{id}',[BienController::class,'update'])->name('biens.update');
     Route::get('/biens/delete/{id}',[BienController::class,'destroy'])->name('biens.destroy');
     Route::get('/delete-commentaire/{id}', [CommentController::class,'delete'])->name('commentaire.supprimer');
+    Route::get('/statistique',[DashboardUserController::class,'statistique'])->name('biens.statistique');
+    
 });
 
 

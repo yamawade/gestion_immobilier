@@ -61,6 +61,10 @@
                             <a href="/listeUtilisateur">
                                 <i class="fas fa-table"></i>Utilisateurs</a>
                         </li>
+                        <li>
+                            <a href="/statistique">
+                                <i class="fas fa-chart-bar"></i>Statistiques</a>
+                        </li>
                     </ul>
                 </nav>
             </div>

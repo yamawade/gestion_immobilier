@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bien;
+
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardUserController extends Controller
 {
@@ -12,9 +15,21 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
+
         $biens = Bien::where('statut', 'disponible')->get();
         return view('admin.listeBien',compact('biens'));
         // return view('admin.index');
+    }
+
+    public function statistique(){
+        $bien = Bien::where('statut','disponible')->count();
+        $bienIndispo = Bien::where('statut','indisponible')->count();
+        $users=User::where('role','user')->count();
+        $admins=User::where('role','admin')->count();
+        $bienCountPercent = DB::table('biens')->select('statut', DB::raw('count(*) as total'))
+        ->groupBy('statut')->get();
+       // dd($bienCountPercent);
+        return view ('admin.statistique',compact('bien','users','bienIndispo','admins','bienCountPercent'));
     }
 
     /**
