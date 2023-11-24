@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bien;
-use App\Models\Comment;
+use App\Models\Chambre;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class BienController extends Controller
 {
@@ -35,9 +37,14 @@ class BienController extends Controller
         $request->validate([
             'nom'=>'bail|required|string|',
             'categorie'=>'bail|required|string|',
-           'image'=>'required|image',
+            'image'=>'required|image|max:1000',
             'description'=>'bail|required|string|',
             'adresse'=>'bail|required|string|',
+            'dimension_bien'=>'bail|required|',
+            'espace_vert'=>'bail|required|string|',
+            'nombre_balcon'=>'bail|required|integer|',
+            'nombre_toilette'=>'bail|required|integer',
+            'nombre_chambre'=>'bail|required|integer|',
             'statut'=>'bail|string|'
         ]);
         $bien = new Bien();
@@ -47,6 +54,13 @@ class BienController extends Controller
             $bien->description =$request->description;
             $bien->adresse =$request->adresse;
             $bien->statut =$request->statut;
+            $bien->dimension_bien =$request->dimension_bien;
+            $bien->espace_vert =$request->espace_vert;
+            $bien->nombre_balcon =$request->nombre_balcon;
+            $bien->nombre_toilette =$request->nombre_toilette;
+            $bien->user_id =$request->user_id;
+            $bien->nombre_chambre =$request->nombre_chambre;
+
 
             if($request->file('image')){
                 $file= $request->file('image');
@@ -59,6 +73,31 @@ class BienController extends Controller
         return redirect(route("biens.create"))->with('status', 'Bien enrigistré avec succés !!');
     }
 
+    public function create_chambre(string $id){
+        $bien = Bien::findOrFail($id);
+        return view('admin.ajoutChambreBien',compact('bien'));
+    }
+
+    public function storeChambre(Request $request){
+        $request->validate([
+            'image'=>'required|image|max:1000',
+            'dimension'=>'bail|required|',
+        ]);
+        $chambre = new Chambre();
+        $chambre->dimension =$request->dimension;
+        $chambre->bien_id =$request->bien_id;
+
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= date('YmdHi').$file->getClientOriginalName();
+            $file-> move(public_path('public/images'), $filename);
+            $chambre['image']= $filename;
+        }
+        $chambre->save();
+        $idbien=$chambre->bien_id;
+        return Redirect::route('biens.show_admin',['id'=>$idbien]);
+
+    }
     /**
      * Display the specified resource.
      */
@@ -77,7 +116,9 @@ class BienController extends Controller
     public function show_admin(string $id){
         $comments = Comment::where('bien_id',$id)->get();
         $bien = Bien::findOrFail($id);
-        return view('admin.detail_admin',compact('bien', 'comments'));
+        //$chambre = Chambre::findOrFail($id);
+        $chambres = Chambre::all();
+        return view('admin.detail_admin',compact('bien', 'comments','chambres'));
         
     }
 

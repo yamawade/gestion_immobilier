@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -18,7 +19,13 @@ return new class extends Migration
             $table->string('image');
             $table->text('description');
             $table->string('adresse');
+            $table->float('dimension_bien');
+            $table->integer('nombre_chambre');
+            $table->integer('nombre_toilette');
+            $table->integer('nombre_balcon');
+            $table->enum('espace_vert',['disponible','indisponible']);
             $table->enum('statut',['disponible','indisponible'])->default('disponible');
+            $table->foreignIdFor(User::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
