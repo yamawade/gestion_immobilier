@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Bien;
 use App\Models\Comment;
-
 use Illuminate\Http\Request;
+use App\Notifications\NotifBien;
+// use Illuminate\Foundation\Auth\User;
+use App\Models\User;
+use Illuminate\Notifications\Notifiable;
 
 class BienController extends Controller
 {
@@ -54,7 +57,12 @@ class BienController extends Controller
                 $file-> move(public_path('public/images'), $filename);
                 $bien['image']= $filename;
             }
-            $bien->save();
+           if($bien->save()){
+            $clients = User::all();
+            foreach($clients as $client){
+                $client->notify(new NotifBien());
+            }
+           }
 
         return redirect(route("biens.create"))->with('status', 'Bien enrigistré avec succés !!');
     }

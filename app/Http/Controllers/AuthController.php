@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Notifications\NotifRegister;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
 
 class AuthController extends Controller
 {
@@ -44,6 +46,7 @@ class AuthController extends Controller
         $user->save();
        // return 'good';
         if ($user->save()) {
+            $user->notify(new NotifRegister());
             return redirect('/');
         }
     }
