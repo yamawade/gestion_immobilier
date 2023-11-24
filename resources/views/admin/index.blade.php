@@ -13,25 +13,25 @@
     <title>Dashboard</title>
 
     <!-- Fontfaces CSS-->
-    <link href="DashboardAdmin/css/font-face.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/css/font-face.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/font-awesome-5/css/fontawesome-all.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/mdi-font/css/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
 
     <!-- Bootstrap CSS-->
-    <link href="DashboardAdmin/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/bootstrap-4.1/bootstrap.min.css')}}" rel="stylesheet" media="all">
 
     <!-- Vendor CSS-->
-    <link href="DashboardAdmin/vendor/animsition/animsition.min.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/wow/animate.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/slick/slick.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="DashboardAdmin/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/wow/animate.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/slick/slick.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="DashboardAdmin/css/theme.css" rel="stylesheet" media="all">
+    <link href="{{asset('DashboardAdmin/css/theme.css')}}" rel="stylesheet" media="all">
 
 </head>
 
@@ -88,7 +88,7 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="DashboardAdmin/images/icon/hijab.jpg" alt="John Doe" />
+                                            <img src="{{asset('DashboardAdmin/images/icon/hijab.jpg')}}" alt="" />
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn" href="#">{{auth()->user()->nom}} {{auth()->user()->prenom}}</a>
@@ -97,7 +97,7 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="DashboardAdmin/images/icon/hijab.jpg" alt="John Doe" />
+                                                        <img src="{{asset('DashboardAdmin/images/icon/hijab.jpg')}}" alt="" />
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -143,28 +143,28 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="DashboardAdmin/vendor/jquery-3.2.1.min.js"></script>
+    <script src="{{asset('DashboardAdmin/vendor/jquery-3.2.1.min.js')}}"></script>
     <!-- Bootstrap JS-->
-    <script src="DashboardAdmin/vendor/bootstrap-4.1/popper.min.js"></script>
-    <script src="DashboardAdmin/vendor/bootstrap-4.1/bootstrap.min.js"></script>
+    <script src="{{asset('DashboardAdmin/vendor/bootstrap-4.1/popper.min.js')}}"></script>
+    <script src="{{asset('DashboardAdmin/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <!-- Vendor JS       -->
-    <script src="DashboardAdmin/vendor/slick/slick.min.js">
+    <script src="{{asset('DashboardAdmin/vendor/slick/slick.min.js')}}">
     </script>
-    <script src="DashboardAdmin/vendor/wow/wow.min.js"></script>
-    <script src="DashboardAdmin/vendor/animsition/animsition.min.js"></script>
-    <script src="DashboardAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js">
+    <script src="{{asset('DashboardAdmin/vendor/wow/wow.min.js')}}"></script>
+    <script src="{{asset('DashboardAdmin/vendor/animsition/animsition.min.js')}}"></script>
+    <script src="{{asset('DashboardAdmin/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
     </script>
-    <script src="DashboardAdmin/vendor/counter-up/jquery.waypoints.min.js"></script>
-    <script src="DashboardAdmin/vendor/counter-up/jquery.counterup.min.js">
+    <script src="{{asset('DashboardAdmin/vendor/counter-up/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('DashboardAdmin/vendor/counter-up/jquery.counterup.min.js')}}">
     </script>
-    <script src="DashboardAdmin/vendor/circle-progress/circle-progress.min.js"></script>
-    <script src="DashboardAdmin/vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-    <script src="DashboardAdmin/vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="DashboardAdmin/vendor/select2/select2.min.js">
+    <script src="{{asset('DashboardAdmin/vendor/circle-progress/circle-progress.min.js')}}"></script>
+    <script src="{{asset('DashboardAdmin/vendor/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+    <script src="{{asset('DashboardAdmin/vendor/chartjs/Chart.bundle.min.js')}}"></script>
+    <script src="{{asset('DashboardAdmin/vendor/select2/select2.min.js')}}">
     </script>
 
     <!-- Main JS-->
-    <script src="DashboardAdmin/js/main.js"></script>
+    <script src="{{asset('DashboardAdmin/js/main.js')}}"></script>
 
 </body>
 

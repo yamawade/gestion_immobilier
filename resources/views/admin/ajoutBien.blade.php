@@ -41,12 +41,35 @@
                                     
                             </div>
                             <div class="form-group">
-                                <label for="description" class="form-label mt-4">Dscription</label>
+                                <label for="description" class="form-label mt-4">Description</label>
                                 <textarea class="form-control" id="description" name="description" placeholder="Description" ></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="adresse" class="form-label mt-4">Adresse</label>
                                 <input type="text" class="form-control" id="adresse" name="adresse" >
+                            </div>
+                            <div class="form-group">
+                                <label for="chambre" class="form-label mt-4">Nombre Chambre</label>
+                                <input type="text" class="form-control" id="chambre" name="nombre_chambre" >
+                            </div>
+                            <div class="form-group">
+                                <label for="toilette" class="form-label mt-4">Nombre Salle D'eau</label>
+                                <input type="text" class="form-control" id="toilette" name="nombre_toilette" >
+                            </div>
+                            <div class="form-group">
+                                <label for="balcon" class="form-label mt-4">Nombre Balcon</label>
+                                <input type="text" class="form-control" id="balcon" name="nombre_balcon" >
+                            </div>
+                            <div class="form-group">
+                                <label for="dimension_bien" class="form-label mt-4">Dimension</label>
+                                <input type="text" class="form-control" id="dimension_bien" name="dimension_bien" >
+                            </div>
+                            <div class="form-group">
+                                <label for="espace_vert" class="form-label mt-4">Espace Vert</label>
+                                <select class="form-select " aria-label="Default select example" name="espace_vert">
+                                    <option value="disponible">disponible</option>
+                                    <option value="indisponible">indisponible</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="statut" class="form-label mt-4">Statut</label>
@@ -55,48 +78,11 @@
                                     <option value="indisponible">indisponible</option>
                                 </select>
                             </div>
+                            <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                             <button type="submit" class="btn btn-primary btn-lg offset-5 mt-4 text-white">Submit</button> 
                         </div>
                     </form>
                 </div>
-                
-                <!-- <form action="/ajoutBien-traitement" method="post"  enctype="multipart/form-data">
-                    @csrf
-                        <div class="form-group">
-                            <label for="nomBien" class="form-label mt-4">Nom bien</label>
-                            <input type="text" class="form-control" id="nomBien" name="nom" >
-                        </div>
-                        <div class="form-group">
-                            <label for="categorie" class="form-label mt-4">Categorie</label>
-                            <select class="form-select " aria-label="Default select example" name="categorie">
-                                <option value="luxe">luxe</option>
-                                <option value="moyen">moyen</option>
-                                <option value="simple">simple</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="image" class="form-label mt-4">Image</label>
-                            <input type="file" class="form-control" id="image" name="image">
-                                
-                        </div>
-                        <div class="form-group">
-                            <label for="description" class="form-label mt-4">Dscription</label>
-                            <textarea class="form-control" id="description" name="description" placeholder="Description" ></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="adresse" class="form-label mt-4">Adresse</label>
-                            <input type="text" class="form-control" id="adresse" name="adresse" >
-                        </div>
-                        <div class="form-group">
-                            <label for="statut" class="form-label mt-4">Statut</label>
-                            <select class="form-select " aria-label="Default select example" name="statut">
-                                <option value="disponible">disponible</option>
-                                <option value="indisponible">indisponible</option>
-                            </select>
-                        </div>
-                        <button type="submit" class="btn btn-info mt-4">Submit</button>
-                </form> -->
-                
             </div>
         </div>
 </div>

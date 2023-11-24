@@ -14,6 +14,12 @@ class Bien extends Model
         'image',
         'description',
         'adresse',
-        'statut'
+        'statut',
+        'espace_vert',
+        'nombre_chambre',
+        'nombre_toilette',
+        'dimension_bien',
+        'nombre_balcon',
+        'user_id'
     ];
 }

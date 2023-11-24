@@ -40,6 +40,8 @@ Route::middleware(['auth', 'role:admin'])->group(function(){
     Route::get('/biens/delete/{id}',[BienController::class,'destroy'])->name('biens.destroy');
     Route::get('/delete-commentaire/{id}', [CommentController::class,'delete'])->name('commentaire.supprimer');
     Route::get('/statistique',[DashboardUserController::class,'statistique'])->name('biens.statistique');
+    Route::get('/ajoutChambre/{id}',[BienController::class,'create_chambre'])->name('biens.createChambre');
+    Route::post('/ajoutChambre-traitement',[BienController::class,'storeChambre'])->name('biens.storeChambre');
     
 });
 
