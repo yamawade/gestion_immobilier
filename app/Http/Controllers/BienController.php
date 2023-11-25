@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Chambre;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Notifications\NotifBien;
+use Illuminate\Support\Facades\Redirect;
 
 class BienController extends Controller
 {
