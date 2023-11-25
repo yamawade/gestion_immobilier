@@ -19,6 +19,7 @@
             <div class="card " style="width: 600px;">
                 <form action="/ajoutChambre-traitement" method="post" enctype="multipart/form-data">
                     @csrf
+
                     <div class="card-header text-center bg-primary text-white">
                         AJOUT D'UNE CHAMBRE
                     </div>
@@ -26,7 +27,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="image" class="form-label mt-4">Image</label>
-                            <input type="file" class="form-control" id="image" name="image">      
+                            <input type="file" class="form-control" id="image" name="image[]" multiple>      
                         </div>
                         <div class="form-group">
                             <label for="dimension" class="form-label mt-4">Dimension</label>
