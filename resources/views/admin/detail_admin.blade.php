@@ -40,7 +40,7 @@
                         <p class="card-text">{{$comment->contenu}}</p>
                         <p class="card-title">{{$comment->created_at}}</p>
                     </div>
-                    @if ($comment->user_id==auth()->user()->id)
+                    @if ($comment->user_id=auth()->user()->id)
                     <a href="{{ route('commentaire.supprimer', ['id' => $comment->id]) }}" class="btn btn-sm btn-warning">Supprimer</a>
                     @endif
                 @endforeach
