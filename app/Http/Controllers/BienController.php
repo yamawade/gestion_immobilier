@@ -80,19 +80,21 @@ class BienController extends Controller
 
     public function storeChambre(Request $request){
         $request->validate([
-            'image'=>'required|image|max:1000',
+            'image.*'=>'required|image|max:5000',
             'dimension'=>'bail|required|',
         ]);
         $chambre = new Chambre();
         $chambre->dimension =$request->dimension;
         $chambre->bien_id =$request->bien_id;
-
-        if($request->file('image')){
-            $file= $request->file('image');
-            $filename= date('YmdHi').$file->getClientOriginalName();
-            $file-> move(public_path('public/images'), $filename);
-            $chambre['image']= $filename;
+        $chambre->image = $request->image;
+        // dd($chambre);
+            $imageNames = [];
+        foreach ($request->image as $value){
+            $imageName = time().'_'.$value->getClientOriginalName();
+            $value-> move(public_path('/images'), $imageName);
+            $imageNames[] = $imageName;
         }
+        $chambre->image = json_encode($imageNames);
         $chambre->save();
         $idbien=$chambre->bien_id;
         return Redirect::route('biens.show_admin',['id'=>$idbien]);
@@ -117,7 +119,8 @@ class BienController extends Controller
         $comments = Comment::where('bien_id',$id)->get();
         $bien = Bien::findOrFail($id);
         //$chambre = Chambre::findOrFail($id);
-        $chambres = Chambre::all();
+        $chambres = Chambre::where('bien_id',$id)->get();         
+        // dd($images);     
         return view('admin.detail_admin',compact('bien', 'comments','chambres'));
         
     }

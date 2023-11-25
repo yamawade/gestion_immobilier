@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('chambres', function (Blueprint $table) {
             $table->id();
-            $table->string('image');
+            $table->json('image');
             $table->float('dimension');
             $table->foreignIdFor(Bien::class)->constrained()->onDelete('cascade');
             $table->timestamps();
