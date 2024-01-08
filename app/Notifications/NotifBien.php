@@ -38,7 +38,7 @@ class NotifBien extends Notification
         return (new MailMessage)
                     ->line('Bonjour nous vous annoncons que nous avons ajouté un nouveau bien')
                     ->action('Notification Action', url('/login'))
-                    ->line('Merci de le consulter!');
+                    ->line('Merci de consulter notre entreprise');
     }
 
     /**
