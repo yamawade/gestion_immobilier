@@ -46,7 +46,7 @@ class AuthController extends Controller
         $user->save();
        // return 'good';
         if ($user->save()) {
-            $user->notify(new NotifRegister());
+            // $user->notify(new NotifRegister());
             return redirect('/');
         }
     }

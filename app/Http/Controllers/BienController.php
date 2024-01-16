@@ -35,7 +35,6 @@ class BienController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
         $request->validate([
             'nom'=>'bail|required|string|',
             'categorie'=>'bail|required|string|',
